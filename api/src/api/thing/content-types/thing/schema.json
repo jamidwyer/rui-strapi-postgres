@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "things",
+  "info": {
+    "singularName": "thing",
+    "pluralName": "things",
+    "displayName": "Thing"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "expires": {
+      "type": "date"
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "Discontinued",
+        "InStock",
+        "LimitedAvailability",
+        "OutOfStock",
+        "SoldOut"
+      ]
+    },
+    "gtin": {
+      "type": "text"
+    },
+    "sku": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "category": {
+      "type": "text"
+    },
+    "size": {
+      "type": "text"
+    }
+  }
+}

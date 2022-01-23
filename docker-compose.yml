@@ -1,0 +1,67 @@
+version: '3.4'
+
+services:
+  frontend:
+    container_name: frontend
+    image: react-web-ui
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+    stdin_open: true
+    environment:
+      - backendUrl=http://api
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start
+    depends_on:
+      - api
+    volumes:
+      - ./frontend:/var/www/html
+    networks:
+      - app-network
+
+  api:
+    image: api
+    container_name: api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+      DATABASE_SSL: 'false'
+    volumes:
+      - ./api:/srv/app
+    ports:
+      - '1337:1337'
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    container_name: db
+    image: postgres
+    env_file: .env
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  data:
+  api:
+  frontend:
+
+networks:
+  app-network:
+    driver: bridge
