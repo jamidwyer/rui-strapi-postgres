@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "elections",
+  "info": {
+    "singularName": "election",
+    "pluralName": "elections",
+    "displayName": "Election",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "startTime": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "datetime",
+      "required": false
+    },
+    "endTime": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime"
+    },
+    "url": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "maxLength": 501
+    },
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "maxLength": 100
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "maxLength": 1000
+    },
+    "states": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state.state",
+      "inversedBy": "elections"
+    },
+    "registration": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::registration.registration"
+    },
+    "election": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::election.election",
+      "inversedBy": "elections"
+    },
+    "elections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::election.election",
+      "mappedBy": "election"
+    }
+  }
+}

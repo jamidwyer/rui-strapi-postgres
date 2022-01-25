@@ -1,3 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:jamidwyer/react-web-ui.git
+[submodule "api/src/api"]
+	path = api/src/api
+	url = git@github.com:jamidwyer/strapi-content-types.git
