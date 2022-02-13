@@ -18,7 +18,7 @@ cd yourapp-app
 To bring your own frontend:
 
 ```bash
-git clone --recurse-submodules -j8 git@github.com:jamidwyer/rui-strapi-postgres.git yourapp-app
+git clone git@github.com:jamidwyer/rui-strapi-postgres.git yourapp-app
 cd yourapp-app
 ```
 
