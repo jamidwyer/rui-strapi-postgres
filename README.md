@@ -8,15 +8,23 @@ Docker
 
 ## Setup
 
-Clone this repo to yourapp-app:
+To get a React frontend with some components, clone this repo and its submodule to yourapp-app:
 
 ```bash
-git clone https://github.com/jamidwyer/rui-strapi-postgres.git yourapp-app
+git clone --recurse-submodules -j8 git@github.com:jamidwyer/rui-strapi-postgres.git yourapp-app
 cd yourapp-app
 ```
 
-Optional:
-Clone a different frontend into /frontend.
+To bring your own frontend:
+
+```bash
+git clone --recurse-submodules -j8 git@github.com:jamidwyer/rui-strapi-postgres.git yourapp-app
+cd yourapp-app
+```
+
+Then build or clone your frontend into /frontend.
+
+Rename .env.example to .env and change values as needed.
 
 ## Run
 
@@ -37,6 +45,8 @@ Add the values for the content-type you'd like.
 Say yes to adding to a new API.
 
 Your new content type will be in /src/api/<singular_name>. You could commit this to a git repo if you or others might use it later.
+
+You can use some of my [saved content types](https://github.com/jamidwyer/strapi-content-types) if they're relevant to your project.
 
 To update your local api Docker image, run:
 
